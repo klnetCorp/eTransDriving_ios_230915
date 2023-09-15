@@ -1,0 +1,222 @@
+/*****************************************************************************/
+/* Copyright (C) 2011-2017 KICA, Inc.  All rights reserved.                  */
+/*****************************************************************************/
+
+/* THIS FILE IS PROPRIETARY MATERIAL OF KICA, INC.
+ * AND MAY BE USED ONLY BY DIRECT LICENSEES OF KICA, INC.
+ * THIS FILE MAY NOT BE DISTRIBUTED. */
+
+/**
+ * FILE: SGA_Define.h
+ */
+
+
+/*
+ * @ver 1.0.0.1 by jykim
+ * - opensign API 추가
+ * @ver 1.0.0.3 by arruu 2011/07/27
+ * - 인증서 갱신시 EXC_BAD_ACCESS 에러 발생 수정
+ */
+#ifndef __SGA_DEFINE_H__
+#define __SGA_DEFINE_H__
+
+#define IN
+#define OUT
+
+//#define		SGIP_API_VERSION				@"1.0.0.3"
+//======== ERROR NO START ====================
+#define		SG_API_ERR_PFX_WRONG_PASSWD		25009
+//======== ERROR NO END =======================
+/* SGCrypto_Algorithm 값과 동일해야함 임의로 변경 하시 마시오 */
+
+#define		SGIP_REVOKE_REASON_KEY_COMPROMISE			@"keyCompromise"
+#define		SGIP_REVOKE_REASON_CA_COMPROMISE			@"cACompromise"
+#define		SGIP_REVOKE_REASON_AFFILIATION_CHANGED		@"affiliationChanged"
+#define		SGIP_REVOKE_REASON_SUPERSEDED				@"superseded"
+#define		SGIP_REVOKE_REASON_CESSATION_OF_OPERATION	@"cessationOfOperation"
+#define		SGIP_REVOKE_REASON_CERTIFICATE_HOLD			@"certificateHold"
+#define		SGIP_REVOKE_REASON_UNKNOWN					@"unknown"
+
+
+
+#define		SGIP_CA_KICA_NAME					@"한국정보인증"
+#define		SGIP_CA_KICA_CMP_HOST				@"ca.signgate.com"
+#define		SGIP_CA_KICA_CMP_PORT				4502
+#define		SGIP_CA_KICA_LDAP_HOST				@"ldap.signgate.com"
+#define		SGIP_CA_KICA_LDAP_PORT				389
+
+#define		SGIP_CA_YESSIGN_NAME				@"금융결제원"
+#define		SGIP_CA_YESSIGN_CMP_HOST			@"ca.signgate.com"
+#define		SGIP_CA_YESSIGN_CMP_PORT			4502
+#define		SGIP_CA_YESSIGN_LDAP_HOST			@"ds.yessign.or.kr"
+#define		SGIP_CA_YESSIGN_LDAP_PORT			389
+
+#define		SGIP_CA_CROSSCERT_NAME				@"한국전자인증"
+#define		SGIP_CA_CROSSCERT_CMP_HOST			@"ca.signgate.com"
+#define		SGIP_CA_CROSSCERT_CMP_PORT			4502
+#define		SGIP_CA_CROSSCERT_LDAP_HOST			@"dir.crosscert.com"
+#define		SGIP_CA_CROSSCERT_LDAP_PORT			389
+
+#define		SGIP_CA_TRADESIGN_NAME				@"KTNET"
+#define		SGIP_CA_TRADESIGN_CMP_HOST			@"ca.signgate.com"
+#define		SGIP_CA_TRADESIGN_CMP_PORT			4502
+#define		SGIP_CA_TRADESIGN_LDAP_HOST			@"ldap.tradesign.net"
+#define		SGIP_CA_TRADESIGN_LDAP_PORT			389
+
+#define		SGIP_CA_SIGNKOREA_NAME				@"코스콤"
+#define		SGIP_CA_SIGNKOREA_CMP_HOST			@"ca.signgate.com"
+#define		SGIP_CA_SIGNKOREA_CMP_PORT			4502
+#define		SGIP_CA_SIGNKOREA_LDAP_HOST			@"dir.signkorea.com"
+#define		SGIP_CA_SIGNKOREA_LDAP_PORT			389
+
+#define     MAX_SIGNERCOUNT 5
+
+typedef enum
+{
+	SGIP_HASHID_SHA1				= 0x20000,
+	SGIP_HASHID_SHA224				= 0x20001,
+	SGIP_HASHID_SHA256				= 0x20002,
+	SGIP_HASHID_SHA384				= 0x20003,
+	SGIP_HASHID_SHA512				= 0x20004,
+	SGIP_HASHID_HAS160				= 0x20005
+} SGIP_ENUM_HASHID;
+
+typedef enum
+{
+	SGIP_SYMID_DES					= 0x20010,
+	SGIP_SYMID_3DES					= 0x20011,
+	SGIP_SYMID_SEED					= 0x20012,
+	SGIP_SYMID_ARIA					= 0x20013,
+	SGIP_SYMID_AES					= 0x20015
+} SGIP_ENUM_SYMID;
+
+typedef enum
+{
+	SGIP_SYMOP_CBC					= 0x20020,
+	SGIP_SYMOP_CFB					= 0x20021,
+	SGIP_SYMOP_CFB_1				= 0x20022,
+	SGIP_SYMOP_CFB_8				= 0x20023,
+	SGIP_SYMOP_CFB_64				= 0x20024,
+	SGIP_SYMOP_CFB_128				= 0x20025,
+	SGIP_SYMOP_ECB					= 0x20026,
+	SGIP_SYMOP_OFB					= 0x20027,
+	SGIP_SYMOP_NON					= 0x20028,
+} SGIP_ENUM_SYMOP;
+
+typedef enum
+{
+	SGIP_ASYMID_RSA					= 0x30000
+} SGIP_ENUM_ASYMID;
+
+typedef enum
+{
+	SGIP_KEYTYPE_PRIKEY				= 0x40000,
+	SGIP_KEYTYPE_PUBKEY				= 0x40001
+} SGIP_ENUM_KEYTYPE;
+
+typedef enum
+{
+	SGIP_SIGNID_SHA1WithRSA			= 0x50000,
+	SGIP_SIGNID_SHA256WithRSA		= 0x50001,
+	SGIP_SIGNID_SHA384WithRSA		= 0x50002,
+	SGIP_SIGNID_SHA512WithRSA		= 0x50003,
+	SGIP_SIGNID_RSA_PSS				= 0x50004,
+	SGIP_SIGNID_RSA_PSS_SHA1		= 0x50005,
+	SGIP_SIGNID_RSA_PSS_SHA256		= 0x50006
+} SGIP_ENUM_SIGNID;
+
+typedef enum
+{
+	SGIP_HMACID_SHA1				= 0x60000,
+	SGIP_HMACID_SHA224				= 0x60001,
+	SGIP_HMACID_SHA256				= 0x60002,
+	SGIP_HMACID_SHA384				= 0x60003,
+	SGIP_HMACID_SHA512				= 0x60004,
+	SGIP_HMACID_DES					= 0x60005,
+} SGIP_ENUM_HMACID;
+
+typedef enum
+{
+	SGIP_SYM_OPTION_NOPADDING		= 0x70000,
+	SGIP_SYM_OPTION_PADDING			= 0x70001,
+} SGIP_ENUM_SYM_OPTION;
+
+typedef enum
+{
+	SGIP_ASYM_OPTION_PKCS1_1_5PADDING	= 0x70002,
+	SGIP_ASYM_OPTION_OAEP_PADDING		= 0x70003,
+	SGIP_ASYM_OPTION_PSS_PADDING		= 0x70004
+} SGIP_ENUM_ASYM_OPTION;
+
+typedef enum
+{
+	SGIP_ASYM_RSA_V15				= 0x80000,
+	SGIP_ASYM_RSA_V21				= 0x80001
+} SGIP_ENUM_RSA;
+
+typedef enum
+{
+	SGIP_CMP_ISSUE_NEW				= 1,
+	SGIP_CMP_ISSUE_REISSUE			= 2
+} SGIP_ENUM_CMP_ISSUE;
+
+typedef enum
+{
+	SGIP_CMP_UPDATE_KEYNEW			= 0x0010,
+	SGIP_CMP_UPDATE_KEYOLD			= 0x0020
+} SGIP_ENUM_CMP_UPDATE;
+
+typedef enum
+{
+	SGIP_CMP_REVOKE_STATE			= 11,
+	SGIP_CMP_REVOKE_HOLD			= 100
+} SGIP_ENUM_CMP_REVOKE;
+
+typedef enum
+{
+	SGIP_LDAP_TYPE_CACERT			= 0x01,
+	SGIP_LDAP_TYPE_USERCERT			= 0x02,
+	SGIP_LDAP_TYPE_SIGNCERT			= 0x03,
+	SGIP_LDAP_TYPE_ARL				= 0x11,
+	SGIP_LDAP_TYPE_CRL				= 0x12,
+	SGIP_LDAP_TYPE_CTL				= 0x21
+} SGIP_ENUM_LDAP_TYPE;
+
+typedef enum
+{
+	SGIP_PBES_TYPE_PBES1WithSHA1SEED_CBC		= 0x00000001,
+	SGIP_PBES_TYPE_PBES1WithSEED_CBC			= 0x00000002,
+	SGIP_PBES_TYPE_PBES2WithSEED_CBC			= 0x00000003,
+	SGIP_PBES_TYPE_PBES2WithDES_EDE3_CBC		= 0x00000004
+} SGIP_ENUM_PBES_TYPE;
+
+typedef enum {
+	CERT_POLICY_GROUP_PERSONAL_WIDE		= 1,
+	CERT_POLICY_GROUP_COPER_WIDE		= 2,
+	CERT_POLICY_GROUP_PERSONAL_BANK		= 3,
+	CERT_POLICY_GROUP_COPER_BANK		= 4,
+	CERT_POLICY_GROUP_PERSONAL_STOCK	= 5,
+	CERT_POLICY_GROUP_PERSONAL_CREDIT	= 6,
+	CERT_POLICY_GROUP_SPECIFIC_PURPOSE	= 7,
+	CERT_POLICY_GROUP_PUBLIC_WIDE		= 8,
+	CERT_POLICY_GROUP_SERVER			= 9,
+	CERT_POLICY_GROUP_USER				= 10,
+	CERT_POLICY_GROUP_ELSE				= 11
+} CERT_POLICY_GROUP;
+
+typedef enum {
+	LOGIN_ASP_BASE64_URLENC		= 0,
+	LOGIN_ASP_HEX				= 1,
+	LOGIN_JSP_BASE64_URLENC		= 2,
+	LOGIN_JSP_HEX				= 3
+} LOGIN_TYPE;
+
+typedef enum {
+	STR_ENCODING_EUCKR		= 0,
+	STR_ENCODING_UTF8		= 1,
+	STR_ENCODING_UTF16		= 2,
+	
+} ENCODING_TYPE;
+
+#endif
+

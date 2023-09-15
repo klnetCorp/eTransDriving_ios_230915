@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5D3A9434-D760-419C-9409-BB2E8C7FC150"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A08D10B-ECCF-46E8-BBFD-E21C812DB198"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eTransDrivingIOS/app/MainViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "-webView:didFinishNavigation:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B21A1518-DB99-43E4-B714-134864350C27"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eTransDrivingIOS/app/MainViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1623"
+            endingLineNumber = "1623"
+            landmarkName = "-getCertList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FDCF81D-8501-42D5-B136-A5A9897074D7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eTransDrivingIOS/app/MainViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2026"
+            endingLineNumber = "2026"
+            landmarkName = "-certExport:authcode:passwd:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B193166-41E5-401F-A1D3-36B69B014C82"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eTransDrivingIOS/app/MainViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1664"
+            endingLineNumber = "1664"
+            landmarkName = "-getCertList"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1B193166-41E5-401F-A1D3-36B69B014C82 - 9ebe4d7bfc2d2203"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MainViewController getCertList]"
+                  moduleName = "eTransDrivingIOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juis/Documents/work/KLNet/%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%E1%84%85%E1%85%A2%E1%86%AB%E1%84%89%E1%85%B3_20221205/IOS/eTransDrivingIOS_221209/eTransDrivingIOS/app/MainViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1666"
+                  endingLineNumber = "1666"
+                  offsetFromSymbolStart = "1372">
+               </Location>
+               <Location
+                  uuid = "1B193166-41E5-401F-A1D3-36B69B014C82 - a80c0fedf3fc2a4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[MainViewController getCertList]_block_invoke_2"
+                  moduleName = "eTransDrivingIOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juis/Documents/work/KLNet/%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%E1%84%85%E1%85%A2%E1%86%AB%E1%84%89%E1%85%B3_20221205/IOS/eTransDrivingIOS_221209/eTransDrivingIOS/app/MainViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1668"
+                  endingLineNumber = "1668"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51CA28FB-739B-4644-A4F2-3C4A0107153C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eTransDrivingIOS/app/MainViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2091"
+            endingLineNumber = "2091"
+            landmarkName = "-certExport:authcode:passwd:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
