@@ -26,7 +26,7 @@
 #define intro_new_version_alert_title_text @"알림"
 #define intro_update_ing_text @"업데이트 중 입니다."
 
-#define IS_MODE @"D";  //초기접속모드 D-개발,P-운영
+#define IS_MODE @"P";  //초기접속모드 D-개발,P-운영
 
 #define CONNECTION_URL @"https://etdriving.klnet.co.kr" //운영 //https://www.etruckbank.co.kr:8443
 #define PUSH_URL @"https://push.plism.com" //운영계 push
