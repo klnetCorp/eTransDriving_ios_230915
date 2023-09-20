@@ -3180,6 +3180,12 @@ enum REQUEST_TYPE {
                          @"/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist",
                          @"/private/var/tmp/cydia.log",
                          @"/private/var/lib/cydia",
+                         @"/Applications/FlyJB.app/FlyJB",
+                         @"/Library/MobileSubstrate/DynamicLibraries/FlyJBX.dylib",
+                         @"/Library/MobileSubstrate/DynamicLibraries/FlyJBX.plist",
+                         @"/usr/lib/FJDobby",
+                         @"/usr/lib/FJHooker.dylib",
+                         @"/var/mobile/Library/Preferences/FJMemory",
                          nil];
     if(!TARGET_IPHONE_SIMULATOR) {
         for (NSString *filePath in checkList) {

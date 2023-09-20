@@ -301,6 +301,12 @@
                                                 @"/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist",
                                                 @"/private/var/tmp/cydia.log",
                                                 @"/private/var/lib/cydia",
+                                                @"/Applications/FlyJB.app/FlyJB",
+                                                @"/Library/MobileSubstrate/DynamicLibraries/FlyJBX.dylib",
+                                                @"/Library/MobileSubstrate/DynamicLibraries/FlyJBX.plist",
+                                                @"/usr/lib/FJDobby",
+                                                @"/usr/lib/FJHooker.dylib",
+                                                @"/var/mobile/Library/Preferences/FJMemory",
                                                 nil];
     for (NSString *filePath in checkList){
         if([[NSFileManager defaultManager]fileExistsAtPath:filePath]) {
