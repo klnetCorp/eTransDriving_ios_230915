@@ -11,6 +11,7 @@
 #import "DataSet.h"
 #import "OpenUDID.h"
 #import "WebViewContainerViewController.h"
+#import "Preference.h"
 #import <CommonCrypto/CommonCryptor.h>
 
 @import Firebase;
@@ -114,9 +115,14 @@
         return testNo;
     }
     
-    [DataSet sharedDataSet].g_fcUserId = @"01000000000";
+//    [DataSet sharedDataSet].g_fcUserId = @"01000000000";
+//
+//    return @"01000000000";
     
-    return @"01000000000";
+    
+    [DataSet sharedDataSet].g_fcUserId = testNo;
+    
+    return testNo;
 }
 
 + (NSString *)getOSVer {
@@ -317,4 +323,59 @@
     return NO;
 }
 
++(void) getPeriod {
+    NSString *userInfo = @"Timer getPeriod";
+    NSTimer *timerRepeat = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getPeriodRepeat:) userInfo:nil repeats:YES];
+}
+
++(void) getPeriodRepeat:(NSTimer*)timer {
+
+    Preference *_preference = [[Preference alloc] init];
+    
+    if ([[_preference getPeriodOnOff] compare:@"Off"] == NSOrderedSame ) return;
+
+    // 기본 구성에 URLSession 생성
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    
+    // request URL 설정
+    NSURL *url = url = [NSURL URLWithString: [NSString stringWithFormat:@"%@%@%@", CONNECTION_URL, GPS_PERIOD_URL, [_preference getAuthPhoneNo]]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+
+    // 셋팅
+    [urlRequest setHTTPMethod:@"GET"];
+
+    // dataTask 생성
+    NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (data!=nil)
+        {
+            NSDictionary* json = [NSJSONSerialization
+                                  JSONObjectWithData:data
+                                  options:kNilOptions
+                                  error:&error];
+
+            NSLog(@"sendTerm %@",  [json objectForKey:@"sendTerm"]);
+            NSLog(@"collectTerm %@", [json objectForKey:@"collectTerm"]);
+            NSLog(@"status %@", [json objectForKey:@"status"]);
+
+            NSString *status = (NSString*)[json objectForKey:@"status"];
+            NSString *sendTerm = (NSString*)[json objectForKey:@"sendTerm"];
+            NSString *collectTerm = (NSString*)[json objectForKey:@"collectTerm"];
+            
+            if ([status compare:@"SUCCESS"] == NSOrderedSame) {
+                Preference *_preference = [[Preference alloc] init];
+                
+                [_preference setReportPeroid:sendTerm];
+                [_preference setCreationPeroid:collectTerm];
+            }
+        }
+        else
+        {
+            NSLog(@"error");
+
+        }
+    }];
+    // request 종료
+    [dataTask resume];
+}
 @end

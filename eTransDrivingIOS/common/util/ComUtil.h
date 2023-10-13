@@ -32,4 +32,6 @@
 + (void)showAlert:(UIViewController *)vc title:(NSString *)title message:(NSString *)message;
 + (BOOL)checkKorean:(NSString*)text;
 +(BOOL)checkJailBreak;
+
++(void)getPeriod;
 @end

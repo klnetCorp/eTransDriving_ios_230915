@@ -207,4 +207,27 @@
 - (void)setLbsStartYn:(NSString *)lbsStartYn {
     [self setPreference:PREF_KEY_LBSSTART_YN value:lbsStartYn];
 }
+
+- (NSString *)getIsToHanjinYn {
+    return [self getPreference:PREF_KEY_IS_TO_HANJIN_YN defValue:@"N"];
+}
+
+- (void)setIsToHanjinYn:(NSString *)isToHanjinYn {
+    [self setPreference:PREF_KEY_IS_TO_HANJIN_YN value:isToHanjinYn];
+}
+
+
+- (NSString *)getPeriodOnOff {
+    return [self getPreference:PREF_KEY_GET_PERIOD_INFO defValue:@"On"];
+}
+
+- (void)setPeriodOn {
+    [self setPreference:PREF_KEY_GET_PERIOD_INFO value:@"On"];
+    
+}
+
+- (void)setPeriodOff {
+    [self setPreference:PREF_KEY_GET_PERIOD_INFO value:@"Off"];
+}
+
 @end

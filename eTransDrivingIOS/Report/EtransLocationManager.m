@@ -93,11 +93,20 @@
 }
 
 - (void)startBeaconScan {
-    [MinewBeaconManager sharedInstance].delegate = self;
-    [[MinewBeaconManager sharedInstance] startScan];
+    NSLog(@"############### startBeaconScan");
+    //목적지가 한진이면 비콘 시작하고 아니면 멈춤
+    if ([[_preference getIsToHanjinYn] compare:@"Y"] == NSOrderedSame) {
+        NSLog(@"############### startBeaconScan YES");
+        [MinewBeaconManager sharedInstance].delegate = self;
+        [[MinewBeaconManager sharedInstance] startScan];
+    } else {
+        NSLog(@"############### startBeaconScan NO");
+        [self stopBeaconScan];
+    }
 }
 
 - (void)stopBeaconScan {
+    NSLog(@"############### stopBeaconScan");
     [MinewBeaconManager sharedInstance].delegate = nil;
     [[MinewBeaconManager sharedInstance] stopScan];
 }
@@ -175,7 +184,8 @@
 #pragma mark ******************MinewBeaconManager Delegate
 - (void)minewBeaconManager:(MinewBeaconManager *)manager didRangeBeacons:(NSArray<MinewBeacon *> *)beacons
 {
-  
+    NSLog(@"---didRangeBeacons:%@", beacons);
+
     _scannedBeacons = beacons;
     
     _scannedBeacons = [_scannedBeacons sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -190,12 +200,12 @@
 
 - (void)minewBeaconManager:(MinewBeaconManager *)manager appearBeacons:(NSArray<MinewBeacon *> *)beacons
 {
-//    NSLog(@"===appear beacons:%@", beacons);
+    NSLog(@"===appear beacons:%@", beacons);
 }
 
 - (void)minewBeaconManager:(MinewBeaconManager *)manager disappearBeacons:(NSArray<MinewBeacon *> *)beacons
 {
-//    NSLog(@"---disappear beacons:%@", beacons);
+    NSLog(@"---disappear beacons:%@", beacons);
 }
 
 
@@ -207,6 +217,8 @@
 #pragma mark **********************Connection Delegate
 - (void)beaconConnection:(MinewBeaconConnection *)connection didChangeState:(ConnectionState)state
 {
+    NSLog(@"---didChangeState");
+
     NSString *string = @"Connection state change to ";
     
     switch (state) {

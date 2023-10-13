@@ -28,13 +28,13 @@
 
 #define IS_MODE @"P";  //초기접속모드 D-개발,P-운영
 
-#define CONNECTION_URL @"https://etdriving.klnet.co.kr" //운영 //https://www.etruckbank.co.kr:8443
-#define PUSH_URL @"https://push.plism.com" //운영계 push
-#define DOC_CONNECTION_URL @"https://etdriving.klnet.co.kr" //운영 //https://www.etruckbank.co.kr
+//#define CONNECTION_URL @"https://etdriving.klnet.co.kr" //운영 //https://www.etruckbank.co.kr:8443
+//#define PUSH_URL @"https://push.plism.com" //운영계 push
+//#define DOC_CONNECTION_URL @"https://etdriving.klnet.co.kr" //운영 //https://www.etruckbank.co.kr
 
-//#define CONNECTION_URL @"https://devetdriving.klnet.co.kr" //개발계
-//#define PUSH_URL @"https://testpush.plism.com" //개발계 push
-//#define DOC_CONNECTION_URL @"https://devetdriving.klnet.co.kr" //개발계 //https://smartest.klnet.co.kr
+#define CONNECTION_URL @"https://devetdriving.klnet.co.kr" //개발계
+#define PUSH_URL @"https://testpush.plism.com" //개발계 push
+#define DOC_CONNECTION_URL @"https://devetdriving.klnet.co.kr" //개발계 //https://smartest.klnet.co.kr
 
 //#define LOGIN_PATH @"/etdriving/login.jsp"
 #define LOGIN_PATH @"/main.do"
@@ -59,6 +59,7 @@
 /** 즉시보고 */
 #define DEF_EVENT_CODE_DIRECT_REPORT    @"02";
 
+#define GPS_PERIOD_URL @"/etdriving/selectDriverInfo.do?method=selectDriverInfo&mobileNo=" //관제 주기 조회 서버 URL
 
 
 //public static String push_url = "https://testpush.plism.com";  //개발계 push
@@ -242,6 +243,8 @@
 
 @property (nonatomic, strong) NSString *isMode;
 @property (nonatomic, strong) NSString *connectUrl;
+
+@property(nonatomic) Boolean isToHanjin;    /** 목적지가 한진 터미널인지 여부*/
 
 +(DataSet *)sharedDataSet;
 

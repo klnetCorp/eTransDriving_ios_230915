@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define PREF_KEY_NAVIGATION_TYPE @"etrans.driving.pref.key.navigationtype" //설정>네비게이션 종류 지정
 #define PREF_KEY_AUTH_PHONE_NO @"etrans.driving.pref.key.authPhoneNo" //ios 인증받은 폰번호
 #define PREF_KEY_USE_TTS @"etrans.driving.pref.key.ttsSet" //TTS 사용여부
+#define PREF_KEY_IS_TO_HANJIN_YN @"etrans.driving.pref.key.istohanjinyn" //관제시작여부
+#define PREF_KEY_GET_PERIOD_INFO @"etrans.driving.pref.key.getperiodinfo" //보고주기사용여부
 
 @interface Preference : NSObject
 {
@@ -120,6 +122,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)getLbsStartYn;
 - (void)setLbsStartYn:(NSString *)lbsStartYn;
+
+- (NSString *)getIsToHanjinYn;
+- (void)setIsToHanjinYn:(NSString *)isToHanjinYn;
+
+- (NSString *)getPeriodOnOff;
+- (void)setPeriodOn;
+- (void)setPeriodOff;
+
 @end
 
 NS_ASSUME_NONNULL_END

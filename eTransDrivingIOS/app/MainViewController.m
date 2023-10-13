@@ -129,7 +129,7 @@ enum REQUEST_TYPE {
     _lastTimestamp2 = [NSDate date];
     
     _preference = [[Preference alloc] init];
-    //[_preference setAuthPhoneNo:@"01023427113"];
+    [_preference setAuthPhoneNo:@"01023427113"];
     
     NSString *sSignHash = [self md5:CONNECTION_URL];
     NSString *getHash = [self sendDataToServer];
@@ -164,28 +164,28 @@ enum REQUEST_TYPE {
         });
     }
     
-
-    if(![sSignHash isEqualToString:getHash]) {
-    
-        NSString *msg = [NSString stringWithFormat:@"프로그램 무결성에 위배됩니다. \nAppStore 내에서 \n 설치하시기 바랍니다."];
-        UIAlertController * alert =  [UIAlertController
-                                      alertControllerWithTitle:@"알림"
-                                      message:msg
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction
-                                   actionWithTitle:@"확인"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action) {
-            exit(0);
-                                   }];
-        [alert addAction:okAction];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self presentViewController:alert animated:YES completion:nil];
-        });
-    }
-    
+//
+//    if(![sSignHash isEqualToString:getHash]) {
+//
+//        NSString *msg = [NSString stringWithFormat:@"프로그램 무결성에 위배됩니다. \nAppStore 내에서 \n 설치하시기 바랍니다."];
+//        UIAlertController * alert =  [UIAlertController
+//                                      alertControllerWithTitle:@"알림"
+//                                      message:msg
+//                                      preferredStyle:UIAlertControllerStyleAlert];
+//
+//        UIAlertAction *okAction = [UIAlertAction
+//                                   actionWithTitle:@"확인"
+//                                   style:UIAlertActionStyleDefault
+//                                   handler:^(UIAlertAction *action) {
+//            exit(0);
+//                                   }];
+//        [alert addAction:okAction];
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self presentViewController:alert animated:YES completion:nil];
+//        });
+//    }
+//
     _webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     [_webView setNavigationDelegate:self];
     [_webView setUIDelegate:self];
@@ -253,6 +253,10 @@ enum REQUEST_TYPE {
     accessGroup = @"24K3FWZV2S.kr.co.klnet.ios.SharingCert";
 
     self.transmitCertServerObj = [[SGTransmitCertServer alloc] init];
+    
+    [_preference setPeriodOn];
+    [ComUtil getPeriod];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -609,6 +613,12 @@ enum REQUEST_TYPE {
        } else if ([method isEqualToString:@"getUploadFile"]) {
            //씰번호 촬영
            [self chooseUploadSource];
+       } else if ([method isEqualToString:@"setPeriodOn"]) {
+           //보고주기 가져오기 사용
+           [_preference setPeriodOn];
+       } else if ([method isEqualToString:@"setPeriodOff"]) {
+           //보고주기 가져오기 중지
+           [_preference setPeriodOff];
        }
         
     } else if ([url containsString:@"hybridapp://callphone"]) {
@@ -835,8 +845,8 @@ enum REQUEST_TYPE {
     NSString *mobileNo = [_preference getAuthPhoneNo];//@"01023427113"; //
     
     //smartest 로컬기기 강제 번호 부여, 운영반영시 반드시 주석처리
-    //mobileNo = @"01023427113";
-    //[_preference setAuthPhoneNo:@"01023427113"]; [_preference getAuthPhoneNo];//
+    mobileNo = @"01023427113";
+    [_preference setAuthPhoneNo:@"01023427113"]; [_preference getAuthPhoneNo];//
     //여기까지 주석
     
     NSString *osVer = [ComUtil getOSVer];
@@ -1398,6 +1408,11 @@ enum REQUEST_TYPE {
         
         _bIsDostartinit = YES;
         
+        //목적지가 한진으로 설정
+        [DataSet sharedDataSet].isToHanjin = YES;
+        [_preference setIsToHanjinYn:@"Y"];
+        [[EtransLocationManager sharedInstance] startBeaconScan];
+        
 //        BluetoothState state = [MinewBeaconManager sharedInstance].bluetoothState;
         
         if ([EtransLocationManager sharedInstance].isOnBluetooth == NO) {
@@ -1427,6 +1442,12 @@ enum REQUEST_TYPE {
         } else if (a == CBManagerAuthorizationAllowedAlways) {
             
         }
+    } else {
+        //목적지가 한진이 아님으로 설정
+        [DataSet sharedDataSet].isToHanjin = NO;
+        [_preference setIsToHanjinYn:@"N"];
+        [[EtransLocationManager sharedInstance] stopBeaconScan];
+        
     }
     
 }
